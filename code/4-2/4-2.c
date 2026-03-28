@@ -1,25 +1,23 @@
 #include <stdio.h>
 
-int sum(int arr[], int n){
-    int a;
-    for(int i = 0; i < n; i++){
-        a += arr[i];
-        return a;
+int sum(int arr[], int n) {
+    int s = 0;
+    for (int i = 0; i < n; i++) {
+        s += arr[i];
     }
+    return s;
 }
 
-double average(int arr[], int n){
-     for(int i = 0; i < n; i++){
-        int a;
-        a += arr[i];
-        return (double)a / n;
-    }
+double average(int arr[], int n) {
+    if (n == 0) return 0.0;
+    return (double)sum(arr, n) / n;
 }
 
-int max(int arr[], int n){
+int max(int arr[], int n) {
+    if (n <= 0) return 0;
     int m = arr[0];
-    for(int i = 0; i < n; i++){
-        if(arr[i] > m){
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > m) {
             m = arr[i];
         }
     }
@@ -27,10 +25,12 @@ int max(int arr[], int n){
 }
 
 int main() {
-    int arr[] = {3, 5, 1, 9, 4, 6};
+    int arr[] = {3, 7, 1, 9, 4, 6};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("sum: %d\n", sum(arr, n));
     printf("avg: %.2f\n", average(arr, n));
     printf("max: %d\n", max(arr, n));
+
+    return 0;
 }
